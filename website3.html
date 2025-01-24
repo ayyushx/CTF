@@ -61,9 +61,91 @@
 
   <p>
     As you navigate this alley, keep an eye out for hidden messages. Not everything is as it seems.  
-    <span style="color: #1e293b;">FLAG{Darknet_Discovery}</span>
   </p>
 
   <a href="index.html" class="link-btn">Return to Index</a>
+  <script>
+    (function () {
+    // A random distraction function
+    function generateRandomNumber() {
+        let randomNumbers = [];
+        for (let i = 0; i < 10; i++) {
+            randomNumbers.push(Math.floor(Math.random() * 100));
+        }
+        console.log("Random numbers:", randomNumbers);
+    }
+
+    // Another unrelated distraction function
+    // function createDummyDivs() {
+    //     for (let i = 0; i < 5; i++) {
+    //         const div = document.createElement("div");
+    //         div.textContent = `This is div #${i + 1}`;
+    //         div.style.color = i % 2 === 0 ? "red" : "blue";
+    //         div.style.margin = "5px";
+    //         document.body.appendChild(div);
+    //     }
+    // }
+
+    // A seemingly important, but actually useless function
+    function isPalindrome(str) {
+        return str === str.split("").reverse().join("");
+    }
+
+    // Obfuscate the flag (dummy encoding)
+    const secretFlag = [
+        67, 84, 70, 123, 104, 49, 100, 100, 51, 110, 95, 102, 108, 52, 103, 95, 105,
+        110, 95, 99, 48, 110, 115, 48, 108, 51, 125,
+    ];
+
+    // Function to decode the flag
+    function decodeFlag(encodedFlag) {
+        return encodedFlag.map((char) => String.fromCharCode(char)).join("");
+    }
+
+    // Dummy async function (distraction)
+    async function fetchFakeData() {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve("Fake data fetched successfully!");
+            }, 2000);
+        });
+    }
+
+    // Add another layer of complexity with nested functions
+    function complexChecker() {
+        const message = "Nested function executed!";
+        function innerFunction() {
+            console.log(message);
+        }
+        innerFunction();
+    }
+
+    // Actual code that checks the URL
+    function main() {
+        if (window.location.pathname.includes("website3.html")) {
+            console.log("Welcome to website3.html!");
+
+            // Run distractions
+            generateRandomNumber();
+            createDummyDivs();
+
+            // Decode and print the flag
+            const flag = decodeFlag(secretFlag);
+            console.log(`Congratulations! Here is your flag: heeloooooo mohit, flag mila kya??`);
+        } else {
+            console.log("This script does nothing here.");
+        }
+    }
+
+    // Execute main function
+    main();
+
+    // Run additional distractions
+    complexChecker();
+
+    // Call an async function and log its result
+    fetchFakeData().then((data) => console.log(data));
+})();
+  </script>
 </body>
 </html>
