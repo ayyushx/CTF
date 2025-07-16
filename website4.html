@@ -1,27 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Encryption Vault</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Share Tech Mono', monospace;
       background: linear-gradient(120deg, #1e293b, #0f172a);
       color: #e2e8f0;
+      margin: 0;
+      padding: 0;
       text-align: center;
-      padding: 20px;
     }
-    h1 {
+
+    header {
+      padding: 40px 20px 10px;
+    }
+
+    header h1 {
       font-size: 3em;
-      margin-bottom: 20px;
+      margin: 0;
       color: #38bdf8;
     }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h2 {
+      color: #60a5fa;
+      font-size: 2em;
+      margin-top: 40px;
+    }
+
     p {
       font-size: 1.2em;
       line-height: 1.6;
-      margin: 10px 0;
+      margin: 16px 0;
     }
+
     .code-box {
       background: #0f172a;
       border: 1px solid #334155;
@@ -30,39 +55,79 @@
       margin: 20px auto;
       color: #94a3b8;
       font-family: monospace;
+      max-width: 700px;
+      word-break: break-word;
     }
+
     .link-btn {
       display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
+      margin-top: 30px;
+      padding: 12px 28px;
       color: #fff;
       background: #1d4ed8;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       text-decoration: none;
       font-size: 1.1em;
       font-weight: bold;
       transition: all 0.3s ease;
     }
+
     .link-btn:hover {
       background: #3b82f6;
-      transform: scale(1.1);
+      transform: scale(1.08);
+    }
+
+    .hidden-flag {
+      color: #0f172a; /* Hidden in dark background */
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #64748b;
+      border-top: 1px solid #1e3a8a;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to The Encryption Vault</h1>
-  <p>
-    Encryption is the foundation of modern cybersecurity. Without it, sensitive data would be exposed to prying eyes.  
-  </p>
 
-  <h2>Decrypt This Cipher:</h2>
-  <div class="code-box">
-    U2VjdXJpdHkgYmVnaW5zIHdpdGggZW5jcnlwdGlvbiwgYnV0IHdoZXJlIGRvZXMgdGhlIGtleSBsaWU/  
-  </div>
+  <header>
+    <h1>Welcome to The Encryption Vault</h1>
+    <p>Where secrets are stored, and keys are everything.</p>
+  </header>
 
-  <p>Clue: Start by decoding the base64 above.</p>
+  <main>
+    <section>
+      <p>
+        Encryption is the foundation of modern cybersecurity. Without it, sensitive data would be exposed to prying eyes.
+        Yet even encrypted vaults must be unlocked eventually.
+      </p>
+    </section>
 
-  <a href="index.html" class="link-btn">Return to Index</a>
+    <section>
+      <h2>Decrypt This Cipher:</h2>
+      <div class="code-box">
+        U2VjdXJpdHkgYmVnaW5zIHdpdGggZW5jcnlwdGlvbiwgYnV0IHdoZXJlIGRvZXMgdGhlIGtleSBsaWU/
+      </div>
+      <p>🧩 Clue: Start by decoding the Base64 message above.</p>
+      <p class="hidden-flag">FLAG{Base64_Breakthrough}</p>
+    </section>
+
+    <section>
+      <p>
+        Remember: not all encryption is strong—it's only as strong as the key is secret.  
+        Once you have the message, ask yourself: what **isn't** encrypted here?
+      </p>
+    </section>
+
+    <a href="index.html" class="link-btn">🔙 Return to Index</a>
+  </main>
+
+  <footer>
+    &copy; 2025 CyberSentinel Vault Systems — Decryption Logs Encrypted
+  </footer>
+
 </body>
 </html>
