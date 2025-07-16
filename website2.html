@@ -1,78 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Firewall Gate</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Share Tech Mono', monospace;
       background: linear-gradient(120deg, #1e293b, #0f172a);
       color: #e2e8f0;
+      margin: 0;
+      padding: 0;
       text-align: center;
-      padding: 20px;
     }
-    h1 {
+
+    header {
+      padding: 40px 20px 10px;
+    }
+
+    header h1 {
       font-size: 3em;
-      margin-bottom: 20px;
+      margin: 0;
       color: #38bdf8;
     }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h2 {
+      color: #60a5fa;
+      font-size: 2em;
+      margin-top: 40px;
+    }
+
     p {
       font-size: 1.2em;
       line-height: 1.6;
-      margin: 10px 0;
+      margin: 16px 0;
     }
+
     ul {
       text-align: left;
       display: inline-block;
       margin: 20px auto;
-      padding: 0;
+      padding: 20px;
       list-style: none;
       background: #0f172a;
       border: 1px solid #334155;
       border-radius: 8px;
-      padding: 20px;
     }
+
     li {
-      margin: 10px 0;
+      margin: 12px 0;
+      font-size: 1.1em;
     }
+
     .link-btn {
       display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
+      margin-top: 30px;
+      padding: 12px 28px;
       color: #fff;
       background: #1d4ed8;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       text-decoration: none;
       font-size: 1.1em;
       font-weight: bold;
       transition: all 0.3s ease;
     }
+
     .link-btn:hover {
       background: #3b82f6;
-      transform: scale(1.1);
+      transform: scale(1.08);
+    }
+
+    .clue-box {
+      background-color: #1e3a8a;
+      border-left: 5px solid #3b82f6;
+      padding: 20px;
+      margin-top: 40px;
+      border-radius: 6px;
+      color: #e0f2fe;
+    }
+
+    .hidden-flag {
+      color: #0f172a;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #64748b;
+      border-top: 1px solid #1e3a8a;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to The Firewall Gate</h1>
-  <p>
-    A firewall acts as a barrier between a trusted network and an untrusted one, analyzing and filtering traffic to protect your systems. However, even the strongest walls have vulnerabilities.  
-  </p>
 
-  <h2>Tips for Enhancing Firewall Security</h2>
-  <ul>
-    <li>Regularly update your firewall rules to address new threats.</li>
-    <li>Enable logging to monitor and analyze suspicious activity.</li>
-    <li>Block unnecessary ports and services.</li>
-    <li>Use a multi-layered approach by combining firewalls with other security measures.</li>
-  </ul>
+  <header>
+    <h1>Welcome to The Firewall Gate</h1>
+    <p>Barriers are meant to protect — or to test those who dare to breach them.</p>
+  </header>
 
-  <p>
-    **Clue:** Firewalls may block your way, but sometimes the key lies beyond the gate.  
-  </p>
+  <main>
+    <section>
+      <p>
+        A firewall acts as a barrier between a trusted network and an untrusted one, analyzing and filtering traffic.
+        But even the most advanced firewalls can become blind to threats hiding in plain sight.
+      </p>
+    </section>
 
-  <a href="index.html" class="link-btn">Return to Index</a>
+    <section>
+      <h2>Tips for Enhancing Firewall Security</h2>
+      <ul>
+        <li>🔒 Regularly update your firewall rules to address emerging threats.</li>
+        <li>📊 Enable logging and monitor logs for unusual behavior patterns.</li>
+        <li>🚫 Close unused ports and disable unnecessary services by default.</li>
+        <li>🛡️ Apply defense-in-depth: firewalls, intrusion detection, endpoint security.</li>
+        <li>🔁 Review and audit rules periodically — what protected yesterday might expose today.</li>
+      </ul>
+    </section>
+
+    <section class="clue-box">
+      <h3>🧠 Hidden Clue</h3>
+      <p>
+        Firewalls may block your way, but sometimes the key lies beyond the gate.<br>
+        Dig deeper. The gatekeeper is silent, but it left a path:
+        <span class="hidden-flag">FLAG{Through_The_Gate}</span>
+      </p>
+      <p>
+        <a href="network_trace.html" style="color: #0f172a;">Next node is hidden in plain packets...</a>
+      </p>
+    </section>
+
+    <a href="index.html" class="link-btn">🔙 Return to Index</a>
+  </main>
+
+  <footer>
+    &copy; 2025 CyberSentinel Corp — Gateway Logs Archived — Trace ID: FWX-422
+  </footer>
+
 </body>
 </html>
