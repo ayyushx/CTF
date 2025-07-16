@@ -1,63 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Zero-Day Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(120deg, #1e293b, #0f172a);
+      font-family: 'Share Tech Mono', monospace;
+      background: linear-gradient(120deg, #0f172a, #1e293b);
       color: #e2e8f0;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #0f172a;
+      padding: 40px 20px 10px;
       text-align: center;
-      padding: 20px;
     }
-    h1 {
+
+    header h1 {
       font-size: 3em;
-      margin-bottom: 20px;
       color: #38bdf8;
+      margin: 0;
     }
+
+    main {
+      flex: 1;
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      color: #60a5fa;
+      font-size: 2em;
+    }
+
     p {
       font-size: 1.2em;
-      line-height: 1.6;
+      line-height: 1.8;
     }
+
     .link-btn {
       display: inline-block;
       margin-top: 20px;
-      padding: 10px 20px;
+      padding: 12px 28px;
       color: #fff;
       background: #1d4ed8;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       text-decoration: none;
       font-size: 1.1em;
       font-weight: bold;
       transition: all 0.3s ease;
     }
+
     .link-btn:hover {
       background: #3b82f6;
-      transform: scale(1.1);
+      transform: scale(1.08);
+    }
+
+    .hidden-flag {
+      color: #0f172a;
+    }
+
+    .clue-box {
+      background-color: #1e3a8a;
+      border-left: 5px solid #3b82f6;
+      padding: 15px;
+      margin-top: 20px;
+      color: #e0f2fe;
+      border-radius: 6px;
+    }
+
+    footer {
+      background-color: #0f172a;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9em;
+      border-top: 1px solid #1e3a8a;
+      color: #64748b;
+    }
+
+    code {
+      background-color: #1e293b;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #38bdf8;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to the Zero-Day Portal</h1>
-  <p>
-    In the realm of zero-days, attackers exploit vulnerabilities unknown to the system developers.  
-    Your first task is to search for what others might overlook.  
-  </p>
 
-  <h2>Can You Find the Hidden Message?</h2>
-  <p>
-    Zero-day vulnerabilities are dangerous because they give attackers an edge.  
-    <span style="color: #1e293b;">FLAG{ZeroDay_Warrior}</span>  
-    The same advantage lies in the details. Look for the hidden key on this page.  
-  </p>
+  <header>
+    <h1>Welcome to the Zero-Day Portal</h1>
+    <p>Your mission starts now. Trust no one. See everything.</p>
+  </header>
 
-  <p>
-    Clue: <span class="hidden"><a href="website2.html">Check the firewall for your next step.</a></span>  
-  </p>
+  <main>
+    <section>
+      <h2>Introduction</h2>
+      <p>
+        Zero-day vulnerabilities represent the deepest cracks in the digital armor of cyberspace.
+        Unknown to developers, but exploited by those who observe quietly.
+        This portal grants access to the hidden layers—only if you know where to look.
+      </p>
+    </section>
 
-  <a href="index.html" class="link-btn">Return to Index</a>
+    <section>
+      <h2>Can You Find the Hidden Message?</h2>
+      <p>
+        Zero-day exploits are dangerous because they give attackers an advantage before patches exist.
+        That same advantage lies in the details.
+      </p>
+      <p class="hidden-flag">FLAG{ZeroDay_Warrior}</p>
+      <p>
+        Look beyond the visible. What isn't said speaks louder than what is.
+      </p>
+    </section>
+
+    <section class="clue-box">
+      <h3>🧠 Clue</h3>
+      <p>
+        Check the logs. Follow the traffic. Sometimes the strongest firewalls guard the weakest secrets.<br>
+        <span class="hidden"><a href="website2.html" style="color: #0f172a;">Check the firewall for your next step.</a></span>
+      </p>
+    </section>
+
+    <section>
+      <h2>Resources</h2>
+      <p>
+        Review your tools. Knowing how systems fail is the first step to making them stronger.
+        <br>Start with: <code>nmap</code>, <code>dirb</code>, <code>wireshark</code>
+      </p>
+      <a href="index.html" class="link-btn">🔙 Return to Index</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>System Protocol v1.04 &mdash; Encryption Layer Active &mdash; &copy; 2025 CyberSentinel Corp.</p>
+  </footer>
+
 </body>
 </html>
