@@ -1,151 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Darknet Alley</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(120deg, #1e293b, #0f172a);
-      color: #e2e8f0;
-      text-align: center;
-      padding: 20px;
+    :root {
+      --bg-dark: #0f172a;
+      --bg-darker: #1e293b;
+      --text-light: #e2e8f0;
+      --accent-blue: #38bdf8;
+      --btn-blue: #1d4ed8;
+      --btn-hover: #3b82f6;
     }
+
+    body {
+      margin: 0;
+      font-family: 'Courier New', Courier, monospace;
+      background: linear-gradient(120deg, var(--bg-darker), var(--bg-dark));
+      color: var(--text-light);
+      overflow-x: hidden;
+    }
+
+    header, main, footer {
+      padding: 2em;
+      text-align: center;
+    }
+
     h1 {
       font-size: 3em;
-      margin-bottom: 20px;
-      color: #38bdf8;
+      margin-bottom: 0.5em;
+      color: var(--accent-blue);
+      text-shadow: 0 0 10px #38bdf8aa;
     }
-    p {
+
+    .typing {
       font-size: 1.2em;
-      line-height: 1.6;
-      margin: 10px 0;
+      margin-bottom: 1.5em;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid;
+      animation: typing 4s steps(40, end), blink 0.7s step-end infinite;
     }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
     blockquote {
-      background: #0f172a;
-      border-left: 4px solid #38bdf8;
-      margin: 20px auto;
-      padding: 10px 20px;
-      font-style: italic;
+      margin: 2em auto;
+      padding: 1em 2em;
+      background: var(--bg-dark);
+      border-left: 4px solid var(--accent-blue);
       color: #94a3b8;
+      font-style: italic;
+      max-width: 600px;
     }
-    .link-btn {
+
+    .link-btn, .flag-btn {
       display: inline-block;
       margin-top: 20px;
-      padding: 10px 20px;
+      padding: 10px 25px;
+      background: var(--btn-blue);
       color: #fff;
-      background: #1d4ed8;
-      border: none;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 1.1em;
       font-weight: bold;
-      transition: all 0.3s ease;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
     }
-    .link-btn:hover {
-      background: #3b82f6;
-      transform: scale(1.1);
+
+    .link-btn:hover, .flag-btn:hover {
+      background: var(--btn-hover);
+      transform: scale(1.05);
+    }
+
+    #flag-output {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #22c55e;
+      display: none;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    footer {
+      font-size: 0.9em;
+      margin-top: 4em;
+      color: #64748b;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to The Darknet Alley</h1>
-  <p>
-    The Darknet is a mysterious and often misunderstood part of the internet. While it provides privacy and anonymity, it’s also a haven for cybercriminal activities.  
-  </p>
+  <header>
+    <h1>The Darknet Alley</h1>
+    <div class="typing">You’ve stepped into the alley where nothing is as it seems...</div>
+  </header>
 
-  <blockquote>
-    "Anonymity is the greatest strength of the darknet, but also its biggest vulnerability."
-  </blockquote>
+  <main>
+    <p>The Darknet is a mysterious and often misunderstood part of the internet. While it provides privacy and anonymity, it’s also a haven for cybercriminal activities.</p>
 
-  <p>
-    As you navigate this alley, keep an eye out for hidden messages. Not everything is as it seems.  
-  </p>
+    <blockquote>
+      "Anonymity is the greatest strength of the darknet, but also its biggest vulnerability."
+    </blockquote>
 
-  <a href="index.html" class="link-btn">Return to Index</a>
+    <p>As you navigate this alley, keep an eye out for hidden messages. Not everything is as it seems.</p>
+
+    <a href="index.html" class="link-btn">Return to Index</a>
+
+    <br/><br/>
+    <button class="flag-btn" onclick="revealFlag()">Show Hidden Flag</button>
+    <div id="flag-output"></div>
+  </main>
+
+  <footer>
+    &copy; 2025 The Darknet Alley. Stay alert, stay anonymous.
+  </footer>
+
+  <canvas id="matrix"></canvas>
+
   <script>
-    (function () {
-    // A random distraction function
-    function generateRandomNumber() {
-        let randomNumbers = [];
-        for (let i = 0; i < 10; i++) {
-            randomNumbers.push(Math.floor(Math.random() * 100));
-        }
-        console.log("Random numbers:", randomNumbers);
-    }
-
-    // Another unrelated distraction function
-    // function createDummyDivs() {
-    //     for (let i = 0; i < 5; i++) {
-    //         const div = document.createElement("div");
-    //         div.textContent = `This is div #${i + 1}`;
-    //         div.style.color = i % 2 === 0 ? "red" : "blue";
-    //         div.style.margin = "5px";
-    //         document.body.appendChild(div);
-    //     }
-    // }
-
-    // A seemingly important, but actually useless function
-    function isPalindrome(str) {
-        return str === str.split("").reverse().join("");
-    }
-
-    // Obfuscate the flag (dummy encoding)
+    // Secret decoding setup
     const secretFlag = [
-        67, 84, 70, 123, 104, 49, 100, 100, 51, 110, 95, 102, 108, 52, 103, 95, 105,
-        110, 95, 99, 48, 110, 115, 48, 108, 51, 125,
+      67, 84, 70, 123, 104, 49, 100, 100, 51, 110, 95, 102, 108, 52, 103, 95,
+      105, 110, 95, 99, 48, 110, 115, 48, 108, 51, 125
     ];
 
-    // Function to decode the flag
-    function decodeFlag(encodedFlag) {
-        return encodedFlag.map((char) => String.fromCharCode(char)).join("");
+    function decodeFlag(encoded) {
+      return encoded.map(code => String.fromCharCode(code)).join('');
     }
 
-    // Dummy async function (distraction)
-    async function fetchFakeData() {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve("Fake data fetched successfully!");
-            }, 2000);
-        });
+    function revealFlag() {
+      if (window.location.pathname.includes("website3.html")) {
+        const flag = decodeFlag(secretFlag);
+        const el = document.getElementById("flag-output");
+        el.innerText = "🎉 FLAG: " + flag;
+        el.style.display = "block";
+      } else {
+        alert("🚫 You're not on the right page! Go to website3.html to reveal the flag.");
+      }
     }
 
-    // Add another layer of complexity with nested functions
-    function complexChecker() {
-        const message = "Nested function executed!";
-        function innerFunction() {
-            console.log(message);
+    // Typing distraction: Random Numbers
+    (function generateRandomNoise() {
+      const nums = Array.from({ length: 5 }, () => Math.floor(Math.random() * 9999));
+      console.log("⚠️ Decoy Data:", nums);
+    })();
+
+    // Another distraction (never called)
+    async function fakeAPI() {
+      return new Promise((res) => setTimeout(() => res("You’ve been watched 👁️"), 1500));
+    }
+
+    // Matrix Background Effect
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const chars = "01abcdefghijklmnopqrstuvwxyz@#$%&".split("");
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function drawMatrix() {
+      ctx.fillStyle = "rgba(15, 23, 42, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#38bdf8";
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
         }
-        innerFunction();
+
+        drops[i]++;
+      }
     }
 
-    // Actual code that checks the URL
-    function main() {
-        if (window.location.pathname.includes("website3.html")) {
-            console.log("Welcome to website3.html!");
-
-            // Run distractions
-            generateRandomNumber();
-            createDummyDivs();
-
-            // Decode and print the flag
-            const flag = decodeFlag(secretFlag);
-            console.log(`Congratulations! Here is your flag: heeloooooo mohit, flag mila kya??`);
-        } else {
-            console.log("This script does nothing here.");
-        }
-    }
-
-    // Execute main function
-    main();
-
-    // Run additional distractions
-    complexChecker();
-
-    // Call an async function and log its result
-    fetchFakeData().then((data) => console.log(data));
-})();
+    setInterval(drawMatrix, 33);
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
   </script>
 </body>
 </html>
