@@ -12,21 +12,50 @@
 
     body {
       font-family: 'Share Tech Mono', monospace;
-      background: linear-gradient(120deg, #1e293b, #0f172a);
+      background: linear-gradient(-45deg, #0f172a, #1e293b, #0f172a, #1e293b);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
       color: #e2e8f0;
       margin: 0;
       padding: 0;
       text-align: center;
     }
 
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     header {
-      padding: 40px 20px 10px;
+      padding: 60px 20px 10px;
     }
 
     header h1 {
       font-size: 3em;
       margin: 0;
       color: #38bdf8;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: .15em solid #38bdf8;
+      width: 0;
+      animation: typing 3s steps(30, end) forwards, blink .75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: #38bdf8 }
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.1em;
+      color: #94a3b8;
     }
 
     main {
@@ -50,36 +79,64 @@
     .code-box {
       background: #0f172a;
       border: 1px solid #334155;
-      border-radius: 8px;
+      border-radius: 12px;
       padding: 20px;
       margin: 20px auto;
       color: #94a3b8;
       font-family: monospace;
       max-width: 700px;
       word-break: break-word;
+      position: relative;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #1d4ed8;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      font-size: 0.9em;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .copy-btn:hover {
+      background: #3b82f6;
     }
 
     .link-btn {
       display: inline-block;
-      margin-top: 30px;
-      padding: 12px 28px;
+      margin-top: 40px;
+      padding: 14px 32px;
       color: #fff;
       background: #1d4ed8;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       text-decoration: none;
-      font-size: 1.1em;
+      font-size: 1.2em;
       font-weight: bold;
       transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
     }
 
     .link-btn:hover {
       background: #3b82f6;
-      transform: scale(1.08);
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.9);
     }
 
     .hidden-flag {
-      color: #0f172a; /* Hidden in dark background */
+      color: transparent;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .hidden-flag.revealed {
+      color: #22c55e;
+      font-weight: bold;
     }
 
     footer {
@@ -94,7 +151,7 @@
 <body>
 
   <header>
-    <h1>Welcome to The Encryption Vault</h1>
+    <h1>The Encryption Vault</h1>
     <p>Where secrets are stored, and keys are everything.</p>
   </header>
 
@@ -108,17 +165,18 @@
 
     <section>
       <h2>Decrypt This Cipher:</h2>
-      <div class="code-box">
+      <div class="code-box" id="cipherBox">
         U2VjdXJpdHkgYmVnaW5zIHdpdGggZW5jcnlwdGlvbiwgYnV0IHdoZXJlIGRvZXMgdGhlIGtleSBsaWU/
+        <button class="copy-btn" onclick="copyCipher()">📋 Copy</button>
       </div>
       <p>🧩 Clue: Start by decoding the Base64 message above.</p>
-      <p class="hidden-flag">FLAG{Base64_Breakthrough}</p>
+      <p class="hidden-flag" onclick="revealFlag()">FLAG{Base64_Breakthrough}</p>
     </section>
 
     <section>
       <p>
         Remember: not all encryption is strong—it's only as strong as the key is secret.  
-        Once you have the message, ask yourself: what **isn't** encrypted here?
+        Once you have the message, ask yourself: what <strong>isn't</strong> encrypted here?
       </p>
     </section>
 
@@ -128,6 +186,19 @@
   <footer>
     &copy; 2025 CyberSentinel Vault Systems — Decryption Logs Encrypted
   </footer>
+
+  <script>
+    function copyCipher() {
+      const cipher = document.getElementById('cipherBox').innerText.trim();
+      navigator.clipboard.writeText(cipher).then(() => {
+        alert("Cipher copied to clipboard!");
+      });
+    }
+
+    function revealFlag() {
+      document.querySelector(".hidden-flag").classList.toggle("revealed");
+    }
+  </script>
 
 </body>
 </html>
