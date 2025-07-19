@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CTF Challenge - Index</title>
   <style>
     body {
@@ -12,22 +12,38 @@
       text-align: center;
       padding: 20px;
     }
+
     h1 {
       font-size: 3em;
       margin-bottom: 20px;
       color: #38bdf8;
     }
+
+    h2 {
+      font-size: 2em;
+      margin-top: 40px;
+      color: #facc15;
+    }
+
     p {
       font-size: 1.2em;
       line-height: 1.6;
       margin: 10px 0;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
+
     .links {
       margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
     }
+
     .link-btn {
       display: inline-block;
-      margin: 10px;
       padding: 15px 30px;
       color: #fff;
       background: #1d4ed8;
@@ -38,47 +54,63 @@
       font-weight: bold;
       transition: all 0.3s ease;
     }
+
     .link-btn:hover {
       background: #3b82f6;
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
-    a.hidden {
+
+    .hidden-clue {
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .hidden-clue a {
       text-decoration: none;
       color: #1e293b;
     }
-    a.hidden:hover {
+
+    .hidden-clue a:hover {
       color: #94a3b8;
       text-decoration: underline;
     }
   </style>
 </head>
+
 <body>
-  <h1>Welcome to the Cybersecurity CTF Challenge</h1>
-  <p>
-    Are you ready to test your skills in unraveling secrets hidden in plain sight?  
-    Cybersecurity isn't just about defense; it's about uncovering the unknown and outsmarting attackers.  
-  </p>
+  <main>
+    <h1>Welcome to the Cybersecurity CTF Challenge</h1>
 
-  <p>
-    Hidden clues lie scattered across these pages. Use your wit, patience, and attention to detail to uncover the flags.  
-    <span class="hidden"><a href="website1.html">Your first clue is closer than you think.</a></span>
-  </p>
+    <p>
+      Are you ready to test your skills in unraveling secrets hidden in plain sight?  
+      Cybersecurity isn't just about defense; it's about uncovering the unknown and outsmarting attackers.
+    </p>
 
-  <h2>The Challenge Awaits</h2>
-  <p>
-    Choose your path wisely:  
-  </p>
-  <div class="links">
-    <a href="website1.html" class="link-btn">The Zero-Day Portal</a>
-    <a href="website2.html" class="link-btn">The Firewall Gate</a>
-    <a href="website3.html" class="link-btn">The Darknet Alley</a>
-    <a href="website4.html" class="link-btn">The Encryption Vault</a>
-    <a href="website5.html" class="link-btn">The Red Team Challenge</a>
-  </div>
+    <p>
+      Hidden clues lie scattered across these pages. Use your wit, patience, and attention to detail to uncover the flags.
+      <span class="hidden-clue" aria-label="Hidden Clue">
+        <a href="website1.html">Your first clue is closer than you think.</a>
+      </span>
+    </p>
 
-  <p>
-    Remember: “A key is useless if you don’t know where the lock is.”  
-    <span class="hidden"><a href="website3.html">Are you ready to step into the shadows?</a></span>
-  </p>
+    <h2>The Challenge Awaits</h2>
+
+    <p>Choose your path wisely:</p>
+
+    <div class="links">
+      <a href="website1.html" class="link-btn">The Zero-Day Portal</a>
+      <a href="website2.html" class="link-btn">The Firewall Gate</a>
+      <a href="website3.html" class="link-btn">The Darknet Alley</a>
+      <a href="website4.html" class="link-btn">The Encryption Vault</a>
+      <a href="website5.html" class="link-btn">The Red Team Challenge</a>
+    </div>
+
+    <p>
+      Remember: <em>“A key is useless if you don’t know where the lock is.”</em>
+      <span class="hidden-clue" aria-label="Hidden Clue">
+        <a href="website3.html">Are you ready to step into the shadows?</a>
+      </span>
+    </p>
+  </main>
 </body>
 </html>
